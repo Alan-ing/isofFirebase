@@ -1,0 +1,7 @@
+{
+  "name": "isof",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

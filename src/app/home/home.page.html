@@ -1,0 +1,105 @@
+<!-- control-ambiental.page.html -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      <ion-icon name="leaf" slot="start"></ion-icon>
+      Control Ambiental Inteligente
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleTheme()">
+        <ion-icon [name]="isDarkMode ? 'sunny' : 'moon'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [class.dark-content]="isDarkMode">
+
+  <!-- Tarjeta de Sensores -->
+  <ion-card [class.dark-card]="isDarkMode">
+    <ion-card-header>
+      <ion-card-title>📊 Datos de Sensores</ion-card-title>
+      <ion-card-subtitle>Monitoreo en tiempo real</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content class="sensor-grid">
+      <div class="sensor-item">
+        <ion-icon name="thermometer" color="danger"></ion-icon>
+        <div>
+          <p>Temperatura</p>
+          <h2>{{ temperature }} °C</h2>
+        </div>
+      </div>
+      <div class="sensor-item">
+        <ion-icon name="water" color="primary"></ion-icon>
+        <div>
+          <p>Humedad</p>
+          <h2>{{ humidity }} %</h2>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Tarjeta de Dispositivos -->
+  <ion-card [class.dark-card]="isDarkMode">
+    <ion-card-header>
+      <ion-card-title>⚙️ Estado de Dispositivos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="devices-grid">
+        <!-- Ventilador con icono PNG -->
+        <div class="device-item" (click)="toggleFan()">
+          <div class="custom-icon-container">
+            <img [src]="fan === 1 ? 'assets/images/fan-off.gif' : 'assets/images/fan-on.png'" 
+                 class="custom-icon"
+                 alt="Ventilador">
+          </div>
+          <p>Ventilador</p>
+          <ion-badge [color]="fan === 1 ? 'primary' : 'medium'">
+            {{ fan === 1 ? 'ON' : 'OFF' }}
+          </ion-badge>
+        </div>
+
+        <!-- Iluminación con icono de Ionic -->
+        <div class="device-item" (click)="toggleLed()">
+          <ion-icon name="bulb" [color]="led === 1 ? 'warning' : 'medium'"></ion-icon>
+          <p>Iluminación</p>
+          <ion-badge [color]="led === 1 ? 'warning' : 'medium'">
+            {{ led === 1 ? 'ON' : 'OFF' }}
+          </ion-badge>
+        </div>
+
+        <!-- Bomba de agua con icono PNG -->
+        <div class="device-item" (click)="togglePump()">
+          <div class="custom-icon-container">
+            <img [src]="waterPump === 1 ? 'assets/images/water-pump-on.gif' : 'assets/images/water-pump-off.png'" 
+                 class="custom-icon"
+                 alt="Bomba de agua">
+          </div>
+          <p>Bomba de Agua</p>
+          <ion-badge [color]="waterPump === 1 ? 'tertiary' : 'medium'">
+            {{ waterPump === 1 ? 'ON' : 'OFF' }}
+          </ion-badge>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Controles Globales -->
+  <ion-card [class.dark-card]="isDarkMode">
+    <ion-card-header>
+      <ion-card-title>🌐 Controles Globales</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="action-buttons">
+      <ion-button expand="block" color="success" (click)="powerOnAll()">
+        <ion-icon name="play" slot="start"></ion-icon>
+        Encender Todo
+      </ion-button>
+
+      <ion-button expand="block" color="danger" (click)="shutdownAll()">
+        <ion-icon name="power" slot="start"></ion-icon>
+        Apagar Todo
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

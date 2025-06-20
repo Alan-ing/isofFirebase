@@ -1,0 +1,20 @@
+{
+  "control": {
+    "shutdown": 0
+  },
+  "devices": {
+    "led": 0,
+    "water_pump": 0
+  },
+  "fans": {
+    "fan_1": 0
+  },
+  "sensors": {
+    "humidity": 20,
+    "temperature": 45
+  },
+  "test": {
+    "float": 24.01,
+    "int": 4
+  }
+}
